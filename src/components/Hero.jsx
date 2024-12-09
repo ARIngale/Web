@@ -1,5 +1,4 @@
 import React from "react"
-import { Instagram, Linkedin, Facebook, Twitter } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
@@ -50,7 +49,7 @@ export default function Hero() {
                     </div>
                 </motion.div>
                 <motion.h1 
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold bg-gradient-to-l from-white to-gray-500 text-transparent bg-clip-text"
+                    className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold bg-gradient-to-l from-white to-gray-500 text-transparent bg-clip-text"
                     initial={{ scale: 0.5, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
@@ -84,17 +83,43 @@ export default function Hero() {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.8 }}
                 >
-                    <SocialButton Icon={Instagram} url="https://www.instagram.com/wce_acm/" />
-                    <SocialButton Icon={Linkedin}  url="https://www.linkedin.com/company/wce-acm-student-chapter/mycompany/" />
-                    <SocialButton Icon={Facebook}  url="https://www.facebook.com/wceacm/" />
-                    <SocialButton Icon={Twitter}  url="https://x.com/wce_acm" />
+                    <SocialButton url="https://www.instagram.com/wce_acm/">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </SocialButton>
+                    <SocialButton url="https://www.linkedin.com/company/wce-acm-student-chapter/mycompany/">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </SocialButton>
+                    <SocialButton url="https://www.facebook.com/wceacm/">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </SocialButton>
+                    <SocialButton url="https://x.com/wce_acm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </SocialButton>
+                    <SocialButton url="mailto:wceacmsc@gmail.com">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </SocialButton>
                 </motion.div>
             </div>
         </div>
     )
 }
 
-function SocialButton({ Icon, url }) {
+function SocialButton({ children, url }) {
     return (
         <motion.a 
             href={url}
@@ -104,7 +129,8 @@ function SocialButton({ Icon, url }) {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
         >
-            <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-black" />
+            {children}
         </motion.a>
     )
 }
+

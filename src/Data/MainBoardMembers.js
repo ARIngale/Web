@@ -92,29 +92,6 @@ const MainBoardMembers = [
         ]
       },
 
-      {
-        position: "Knowledge Leads",
-        members: [
-          {
-            name: "Siya Pondkule",
-            profilePic: "",
-            socialHandles: {
-              linkedIn: "",
-              github: "",
-              instagram: ""
-            }
-          },
-          {
-            name: "Akshay Wale",
-            profilePic: "",
-            socialHandles: {
-              linkedIn: "",
-              github: "",
-              instagram: ""
-            }
-          }
-        ]
-      },
 
       {
         position: "Technical Leads",
