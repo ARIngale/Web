@@ -1,170 +1,161 @@
 const MainBoardMembers = [
-    {
-        position: "Chairperson",
-        members: [
-          {
-            name: "Hamza Shaikh",
-            profilePic: "",
-            socialHandles: {
-              linkedIn: "https://www.instagram.com/hamzu_0180/",
-              github: "https://www.instagram.com/hamzu_0180/",
-              instagram: "https://www.instagram.com/hamzu_0180/"
-            }
-          }
-        ]
-      },
-
+  {
+    position: "Chairperson",
+    members: [
       {
-        position: "Co-Chairperson",
-        members: [
-          {
-            name: "Sharaneshwar Punjal",
-            profilePic: "",
-            socialHandles: {
-              linkedIn: "",
-              github: "",
-              instagram: ""
-            }
-          }
-        ]
-      },
-
+        name: "Hamza Shaikh",
+        profilePic: "",
+        quote: "Eat-Sleep-Code-Repeat",
+        socialHandles: {
+          linkedIn: "https://www.instagram.com/hamzu_0180/",
+          instagram: "https://www.instagram.com/hamzu_0180/"
+        }
+      }
+    ]
+  },
+  {
+    position: "Co-Chairperson",
+    members: [
       {
-        position: "Secretary",
-        members: [
-          {
-            name: "Manaswi Devekar",
-            profilePic: "",
-            socialHandles: {
-              linkedIn: "",
-              github: "",
-              instagram: ""
-            }
-          }
-        ]
-      },
-
+        name: "Sharaneshwar Punjal",
+        profilePic: "",
+        quote: "",
+        socialHandles: {
+          linkedIn: "",
+          instagram: ""
+        }
+      }
+    ]
+  },
+  {
+    position: "Secretary",
+    members: [
       {
-        position: "Event Leads",
-        members: [
-          {
-            name: "Anjali Kumbhar",
-            profilePic: "",
-            socialHandles: {
-              linkedIn: "",
-              github: "",
-              instagram: ""
-            }
-          },
-          {
-            name: "Pratiksha Bramhane",
-            profilePic: "",
-            socialHandles: {
-              linkedIn: "",
-              github: "",
-              instagram: ""
-            }
-          }
-        ]
-      },
-
+        name: "Manaswi Devekar",
+        profilePic: "",
+        quote: "",
+        socialHandles: {
+          linkedIn: "",
+          instagram: ""
+        }
+      }
+    ]
+  },
+  {
+    position: "Event Leads",
+    members: [
       {
-        position: "Knowledge Leads",
-        members: [
-          {
-            name: "Siya Pondkule",
-            profilePic: "",
-            socialHandles: {
-              linkedIn: "",
-              github: "",
-              instagram: ""
-            }
-          },
-          {
-            name: "Akshay Wale",
-            profilePic: "",
-            socialHandles: {
-              linkedIn: "",
-              github: "",
-              instagram: ""
-            }
-          }
-        ]
+        name: "Anjali Kumbhar",
+        profilePic: "",
+        quote: "",
+        socialHandles: {
+          linkedIn: "",
+          instagram: ""
+        }
       },
-
-
       {
-        position: "Technical Leads",
-        members: [
-          {
-            name: "Aishwarya Suryawanshi",
-            profilePic: "",
-            socialHandles: {
-              linkedIn: "",
-              github: "",
-              instagram: ""
-            }
-          },
-          {
-            name: "Atharv Ingale",
-            profilePic: "",
-            socialHandles: {
-              linkedIn: "",
-              github: "",
-              instagram: ""
-            }
-          }
-        ]
-      },
-
+        name: "Pratiksha Bramhane",
+        profilePic: "",
+        quote: "",
+        socialHandles: {
+          linkedIn: "",
+          instagram: ""
+        }
+      }
+    ]
+  },
+  {
+    position: "Knowledge Leads",
+    members: [
       {
-        position: "Public Relation Officers",
-        members: [
-          {
-            name: "Jasmin Sayyad",
-            profilePic: "",
-            socialHandles: {
-              linkedIn: "",
-              github: "",
-              instagram: ""
-            }
-          },
-          {
-            name: "Himanshu Patil",
-            profilePic: "",
-            socialHandles: {
-              linkedIn: "",
-              github: "",
-              instagram: ""
-            }
-          }
-        ]
+        name: "Siya Pondkule",
+        profilePic: "",
+        quote: "",
+        socialHandles: {
+          linkedIn: "",
+          instagram: ""
+        }
       },
-
       {
-        position: "Creative Leads",
-        members: [
-          {
-            name: "Amit Wasnik",
-            profilePic: "",
-            socialHandles: {
-              linkedIn: "",
-              github: "",
-              instagram: ""
-            }
-          },
-          {
-            name: "Manas Gedam",
-            profilePic: "",
-            socialHandles: {
-              linkedIn: "",
-              github: "",
-              instagram: ""
-            }
-          }
-        ]
+        name: "Akshay Wale",
+        profilePic: "",
+        quote: "",
+        socialHandles: {
+          linkedIn: "",
+          instagram: ""
+        }
+      }
+    ]
+  },
+  {
+    position: "Technical Leads",
+    members: [
+      {
+        name: "Aishwarya Suryawanshi",
+        profilePic: "",
+        quote: "",
+        socialHandles: {
+          linkedIn: "",
+          instagram: ""
+        }
       },
-  
+      {
+        name: "Atharv Ingale",
+        profilePic: "",
+        quote: "",
+        socialHandles: {
+          linkedIn: "",
+          instagram: ""
+        }
+      }
+    ]
+  },
+  {
+    position: "Public Relation Officers",
+    members: [
+      {
+        name: "Jasmin Sayyad",
+        profilePic: "",
+        quote: "",
+        socialHandles: {
+          linkedIn: "",
+          instagram: ""
+        }
+      },
+      {
+        name: "Himanshu Patil",
+        profilePic: "",
+        quote: "",
+        socialHandles: {
+          linkedIn: "",
+          instagram: ""
+        }
+      }
+    ]
+  },
+  {
+    position: "Creative Leads",
+    members: [
+      {
+        name: "Amit Wasnik",
+        profilePic: "",
+        quote: "",
+        socialHandles: {
+          linkedIn: "",
+          instagram: ""
+        }
+      },
+      {
+        name: "Manas Gedam",
+        profilePic: "",
+        quote: "",
+        socialHandles: {
+          linkedIn: "",
+          instagram: ""
+        }
+      }
+    ]
+  }
 ];
 
 export default MainBoardMembers;
