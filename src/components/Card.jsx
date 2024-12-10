@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const StyledWrapper = styled.div`
   .parent {
-    width: 22vmax;
+    width: 20vmax;
     height: 30vmax;
     perspective: 1000px;
   }
@@ -17,7 +17,7 @@ const StyledWrapper = styled.div`
 
   .card {
     width: 100%;
-    height: 100%;
+    height: 90%;
     border: 4px solid yellow;
     border-radius: 50px;
     background: #0A93C4;
@@ -34,19 +34,23 @@ const StyledWrapper = styled.div`
 
     .content img {
     width: 100%;
-    height: 70%;
+    height: 60%;
     object-fit: cover;
-    border-radius: 50px;
+    border-radius: 45px;
     border: 4px solid white;
     }
 
     @media (max-width: 768px) { 
     .content{
+    width: 100%;
     padding: 3vmin;
     }
     .content img {
         border : 2px solid white;
     }
+    .card{
+        width: 100%;
+        }
     }
 
   .content .title {
@@ -54,7 +58,6 @@ const StyledWrapper = styled.div`
     text-align: center;
     color: white;
     font-weight: 900;
-    margin-top: 10px;
     font-size: 3vmin;
   }
 
@@ -63,8 +66,14 @@ const StyledWrapper = styled.div`
     text-align: center;
     color: white;
     font-size: 15px;
-    margin-top: 10px;
+
   }
+
+  .quote {
+  background: linear-gradient(to right, #fffc00, #ffffff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
 
   @media (max-width: 768px) {
     .content .title {
@@ -148,15 +157,16 @@ const StyledWrapper = styled.div`
     box-shadow: rgba(5, 71, 17, 0.2) -5px 20px 10px 0px;
   }
   `
-const Board = ({ name, post, imageUrl, socialLinks }) => {
+const Board = ({ name, post, imageUrl, socialLinks, quote, showQuote }) => {
   return (
     <StyledWrapper>
-      <div className="parent w-full lg:w-1/4">
+      <div className="parent">
         <div className="card ">
           <div className="content">
             <img src="https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://fdczvxmwwjwpwbeeqcth.supabase.co/storage/v1/object/public/images/50dab922-5d48-4c6b-8725-7fd0755d9334/3a3f2d35-8167-4708-9ef0-bdaa980989f9.png"  />
             <span className="title">{name}</span>
             <span className="text">{post}</span>
+            {showQuote ? <p className="quote italic text-center mt-2">"{quote}"</p> : null}
           </div>
           <div className="bottom">
             <div className="social-buttons-container">
