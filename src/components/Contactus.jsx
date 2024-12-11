@@ -1,191 +1,154 @@
-import React from "react";
-import styled from "styled-components";
-import { useState } from "react";
+import React, { useState } from 'react';
+import { toast, Toaster } from 'react-hot-toast';
 
-const StyledWrapper = styled.div`
-  .form-container {
-    width: 400px;
-    background: linear-gradient(#212121, #212121) padding-box,
-      linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
-    border: 2px solid transparent;
-    padding: 32px 24px;
-    font-size: 14px;
-    font-family: inherit;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    box-sizing: border-box;
-    border-radius: 16px;
-  }
+const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
 
-  .form-container button:active {
-    scale: 0.95;
-  }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
-  .form-container .form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    toast.loading('Sending message...');
 
-  .form-container .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '5556eabe-177c-417a-b296-f761b4b18757',
+          ...formData,
+        }),
+      });
 
-  .form-container .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #717171;
-    font-weight: 600;
-    font-size: 12px;
-  }
+      const data = await response.json();
 
-  .form-container .form-group input {
-    width: 100%;
-    padding: 12px 16px;
-    border-radius: 8px;
-    color: #fff;
-    font-family: inherit;
-    background-color: transparent;
-    border: 1px solid #414141;
-  }
-
-  .form-container .form-group textarea {
-    width: 100%;
-    padding: 12px 16px;
-    border-radius: 8px;
-    resize: none;
-    color: #fff;
-    height: 96px;
-    border: 1px solid #414141;
-    background-color: transparent;
-    font-family: inherit;
-  }
-
-  .form-container .form-group input::placeholder {
-    opacity: 0.5;
-  }
-
-  .form-container .form-group input:focus {
-    outline: none;
-    border-color: #e81cff;
-  }
-
-  .form-container .form-group textarea:focus {
-    outline: none;
-    border-color: #e81cff;
-  }
-
-  .form-container .form-submit-btn {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    align-self: flex-start;
-    font-family: inherit;
-    color: #717171;
-    font-weight: 600;
-    width: 40%;
-    background: #313131;
-    border: 1px solid #414141;
-    padding: 12px 16px;
-    font-size: inherit;
-    gap: 8px;
-    margin-top: 8px;
-    cursor: pointer;
-    border-radius: 6px;
-  }
-
-  .form-container .form-submit-btn:hover {
-    background-color: #fff;
-    border-color: #fff;
-  }
-`;
-
-
-
-
-function ContactUs() {
-
-    const [result, setResult] = React.useState("");
-
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    setResult("Sending....");
-    const formData = new FormData(event.target);
-
-    formData.append("access_key", "5556eabe-177c-417a-b296-f761b4b18757");
-
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      setResult("Message sent Successfully");
-      event.target.reset();
-    } else {
-      console.log("Error", data);
-      setResult(data.message);
+      if (data.success) {
+        toast.success('Message sent successfully!');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        toast.error('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      toast.error('An error occurred. Please try again.');
     }
   };
 
   return (
-    <div className="  w-screen h-fit text-white justify-evenly pt-28 pb-10 flex flex-col lg:flex-row items-center ">
-      <div className="location w-full px-10 lg:w-1/2">
-        <h2 className="text-center font-semibold text-4xl mb-10 lg:mt-10">Our location</h2>
-        <div style={{ width: '100%', height: '450px' }}>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3818.609076472004!2d74.59888257492179!3d16.845738683952064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc1237f52c65db5%3A0xa3535676176ded0a!2sWalchand%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1733626750439!5m2!1sen!2sin"
-        width="80%"
-        height="100%"
-        style={{ border: 0, margin: 'auto', borderRadius: '10px' }}
-        allowFullScreen=""
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-        title="Google Map"
-      ></iframe>
-    </div>
-      </div>
-      <div className="contact w-1/2  flex flex-col items-center mt-5 lg:mt-0">
-        <h2 className="font-semibold text-4xl mb-10">Contact us</h2>
-        <StyledWrapper>
-          <div className="form-container">
-            <form onSubmit={onSubmit} className="form">
-              <div className="form-group">
-                <label htmlFor="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" required />
+    <div className=" text-white min-h-fit mb-5 py-16 px-4 sm:px-6 lg:px-8">
+      <Toaster position="top-center" toastOptions={{ duration: 5000 }} />
+      <div className="max-w-7xl mx-auto">
+      <h2 className="text-4xl font-bold text-center mb-12 bg-heading-bg text-transparent bg-clip-text">
+      Contact Us
+      </h2>
 
-                <label htmlFor="email">Email</label>
-                <input type="text" id="email" name="email" placeholder="Enter your E-mail" required />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="space-y-8">
+            <div>
+              {/* <h3 className="text-2xl font-semibold mb-4">Our Location</h3> */}
+              <div style={{ width: '100%', height: '350px' }}>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3818.609076472004!2d74.59888257492179!3d16.845738683952064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc1237f52c65db5%3A0xa3535676176ded0a!2sWalchand%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1733626750439!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, borderRadius: '0.5rem' }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Google Map"
+                ></iframe>
               </div>
-              <div className="form-group">
-                <label htmlFor="textarea">Message</label>
-                <textarea
-                  name="textarea"
-                  id="textarea"
-                  rows={10}
-                  cols={50}
+            </div>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-3">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span>Walchand College of Engineering, Sangli, Maharashtra</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span>wceacmsc@gmail.com</span>
+              </div>
+           
+            </div>
+          </div>
+          <div>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-400">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   required
-                  defaultValue={""}
+                  className="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  placeholder="Enter your name"
                 />
               </div>
-              <button className="form-submit-btn" type="submit">
-                Submit
-              </button>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-400">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  placeholder="Enter your email"
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-400">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={4}
+                  required
+                  className="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  placeholder="Enter your message"
+                ></textarea>
+              </div>
+              <div>
+                <button
+                  type="submit"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition duration-150 ease-in-out"
+                >
+                  Send Message
+                </button>
+              </div>
             </form>
-            <span>{result}</span>
           </div>
-        </StyledWrapper>
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default ContactUs;
-
 

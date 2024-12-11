@@ -1,40 +1,115 @@
-const events = [
-    {
-      id: 1,
-      name: "Event One",
-      date: "2023-10-01",
-      location: "Location One",
-      description:"",
-      // description: "lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      image:"/wce_acm_team.jpg",
-    },
-    {
-      id: 2,
-      name: "Event Two",
-      date: "2023-11-15",
-      location: "Location Two",
-      description: "lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      image:"/wce_acm_team.jpg",
-    },
-    {
-      id: 3,
-      name: "Event Three",
-      date: "2023-12-05",
-      location: "Location Three",
-      description: "lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      image:"/wce_acm_team.jpg",
-    },
-    {
-      id: 4,
-      name: "Event Four",
-      date: "2024-01-20",
-      location: "Location Four",
-      description: "lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      image:"/wce_acm_team.jpg",
-    },
-  ];
+export const upcoming = [
+  {
+    id: 1,
+    name: "Tech Innovation Summit",
+    date: "2023-10-01",
+    location: "Silicon Valley Convention Center",
+    description: "Join us for a day of cutting-edge technology presentations and networking opportunities.",
+    image: "/wce_acm_team.jpg",
+    detailedInfo: {
+      schedule: [
+        { time: "09:00 AM", activity: "Registration and Welcome Coffee" },
+        { time: "10:00 AM", activity: "Keynote Speech: The Future of AI" },
+        { time: "12:00 PM", activity: "Lunch Break and Networking" },
+        { time: "02:00 PM", activity: "Panel Discussion: Blockchain in Finance" },
+        { time: "04:00 PM", activity: "Closing Remarks and Networking Mixer" }
+      ],
+      speakers: [
+        { name: "Dr. Jane Smith", role: "AI Research Lead at TechCorp" },
+        { name: "John Doe", role: "Blockchain Expert and Author" }
+      ],
+      ticketPrice: "$299"
+    }
+  },
+  {
+    id: 2,
+    name: "Startup Pitch Competition",
+    date: "2023-11-15",
+    location: "Downtown Innovation Hub",
+    description: "Watch promising startups pitch their ideas to top investors and win funding.",
+    image: "/wce_acm_team.jpg",
+    detailedInfo: {
+      schedule: [
+        { time: "10:00 AM", activity: "Opening Ceremony" },
+        { time: "11:00 AM", activity: "First Round of Pitches" },
+        { time: "01:00 PM", activity: "Lunch and Networking" },
+        { time: "02:30 PM", activity: "Final Round of Pitches" },
+        { time: "04:30 PM", activity: "Awards Ceremony" }
+      ],
+      prizes: [
+        { place: "1st", amount: "$100,000 in funding" },
+        { place: "2nd", amount: "$50,000 in funding" },
+        { place: "3rd", amount: "$25,000 in funding" }
+      ],
+      entryFee: "$50 for attendees, Free for selected startups"
+    }
+  },
+  // Add more events with detailed info...
+];
+
+export const pastEvents = [
+  {
+    id: 1,
+    title: "AI Conference 2023",
+    date: "2023-05-15",
+    description: "A groundbreaking conference on the latest advancements in Artificial Intelligence.",
+    images: ["/wce_acm_team.jpg", "/wce_acm_team.jpg", "/wce_acm_team.jpg"],
+    color: "#4A90E2",
+    highlights: [
+      "Keynote by Dr. Alan Turing II on 'The Future of Machine Learning'",
+      "Live demonstration of an advanced neural network",
+      "Panel discussion on AI ethics with industry leaders"
+    ],
+    attendees: 5000
+  },
+  {
+    id: 2,
+    title: "Hackathon for Social Good",
+    date: "2023-06-20",
+    description: "A 48-hour coding marathon to create innovative solutions for social issues.",
+    images: ["/wce_acm_team.jpg", "/wce_acm_team.jpg", "/wce_acm_team.jpg"],
+    color: "#50E3C2",
+    highlights: [
+      "Over 200 participants from 20 countries",
+      "Top project: An app for connecting food donors with local shelters",
+      "$50,000 in prizes awarded to the best solutions"
+    ],
+    attendees: 500
+  },
+  {
+    id: 3,
+    title: "AI Conference 2023",
+    date: "2023-05-15",
+    description: "A groundbreaking conference on the latest advancements in Artificial Intelligence.",
+    images: ["/wce_acm_team.jpg", "/wce_acm_team.jpg", "/wce_acm_team.jpg"],
+    color: "#4A90E2",
+    highlights: [
+      "Keynote by Dr. Alan Turing II on 'The Future of Machine Learning'",
+      "Live demonstration of an advanced neural network",
+      "Panel discussion on AI ethics with industry leaders"
+    ],
+    attendees: 5000
+  },
+  {
+    id: 4,
+    title: "AI Conference 2023",
+    date: "2023-05-15",
+    description: "A groundbreaking conference on the latest advancements in Artificial Intelligence.",
+    images: ["/wce_acm_team.jpg", "/wce_am_team.jpg", "/wce_acm_team.jpg"],
+    color: "#4A90E2",
+    highlights: [
+      "Keynote by Dr. Alan Turing II on 'The Future of Machine Learning'",
+      "Live demonstration of an advanced neural network",
+      "Panel discussion on AI ethics with industry leaders"
+    ],
+    attendees: 5000
+  },
+  // Add more past events...
+];
+
+
   
-  export default events;
+
   
   import { Facebook, Twitter, Linkedin } from 'lucide-react';
 
@@ -121,106 +196,49 @@ const events = [
   
   
 
-  export const event = [
+ 
+  
+  export const blogPosts = [
     {
-      id: 1,
-      title: "AI Hackathon 2024",
-      date: "March 15-17, 2024",
-      description: "Join us for an exhilarating 48-hour AI hackathon! Develop cutting-edge AI solutions and compete for amazing prizes. Network with industry experts and showcase your skills in machine learning, natural language processing, and computer vision.",
-      images: ["/wce_acm_team.jpg", "/wce_acm_team.jpg", "/wce_acm_team.jpg", "/wce_acm_team.jpg"],
-      color: "#FF6B6B",
-      icon: "🤖",
-      isUpcoming: true
+      id: '1',
+      title: 'Getting Started with React',
+      excerpt: 'Learn the basics of React and start building your first application.',
+      content: 'React is a popular JavaScript library for building user interfaces. It allows you to create reusable UI components and manage the state of your application efficiently. In this post, we\'ll cover the basics of React, including components, props, and state.React is a popular JavaScript library for building user interfaces. It allows you to create reusable UI components and manage the state of your application efficiently. In this post, we\'ll cover the basics of React, including components, props, and state.',
+      image: '/wce_acm_team.jpg',
+      category: 'Frontend',
+      readTime: '5 min read',
+      likes: 42,
+      tags: ['React', 'JavaScript', 'Frontend']
     },
     {
-      id: 2,
-      title: "Blockchain Summit",
-      date: "April 5-7, 2024",
-      description: "Explore the future of blockchain technology with industry experts. Network, learn, and discover new opportunities in the crypto world. Attend workshops on smart contracts, DeFi, and the latest blockchain platforms.",
-      images: ["/wce_acm_team.jpg", "/wce_acm_team.jpg", "/wce_acm_team.jpg", "/wce_acm_team.jpg"],
-      color: "#4ECDC4",
-      icon: "🔗",
-      isUpcoming: true
+      id: '2',
+      title: 'CSS Grid Layout: A Comprehensive Guide',
+      excerpt: 'Master CSS Grid Layout and create complex layouts with ease.',
+      content: 'CSS Grid Layout is a powerful tool for creating two-dimensional layouts on the web. It provides a flexible way to arrange content in rows and columns, making it easier to create complex layouts that were previously difficult to achieve with CSS.',
+      image: '/wce_acm_team.jpg',
+      category: 'CSS',
+      readTime: '8 min read',
+      likes: 35,
+      tags: ['CSS', 'Layout', 'Web Design']
     },
-    {
-      id: 3,
-      title: "VR Gaming Expo",
-      date: "May 20-22, 2024",
-      description: "Experience the next generation of gaming in our immersive VR Gaming Expo. Try out the latest VR technologies and meet game developers. Participate in VR gaming tournaments and attend panels on the future of virtual reality in gaming.",
-      images: ["/wce_acm_team.jpg", "/wce_acm_team.jpg", "/wce_acm_team.jpg", "/wce_acm_team.jpg"],
-      color: "#FF9FF3",
-      icon: "🎮",
-      isUpcoming: true
-    },
-    {
-      id: 4,
-      title: "Cybersecurity Conference 2023",
-      date: "November 10-12, 2023",
-      description: "Stay ahead of cyber threats at our annual Cybersecurity Conference. Learn from top security experts and discover the latest in digital defense. Attend workshops on ethical hacking, threat intelligence, and secure software development.",
-      images: ["/wce_acm_team.jpg", "/wce_acm_team.jpg", "/wce_acm_team.jpg", "/wce_acm_team.jpg"],
-      color: "#54A0FF",
-      icon: "🛡️",
-      isUpcoming: false
-    }
+    // Add more blog posts as needed
   ];
   
-  export const upcoming = [
+  
+  
+  
+  
+  export const facilitators = [
     {
-      id: 5,
-      title: "Tech Innovation Hackathon 2024",
-      date: "February 1-3, 2024",
-      description: "Join us for an exciting hackathon focused on innovative tech solutions. Collaborate with fellow developers, designers, and entrepreneurs to create groundbreaking projects.",
-      image:"/wce_acm_team.jpg",
-      color: "#FFD700",
-      icon: "💡"
-    },
-    {
-      id: 5,
-      title: "Tech Innovation Hackathon 2024",
-      date: "February 1-3, 2024",
-      description: "Join us for an exciting hackathon focused on innovative tech solutions. Collaborate with fellow developers, designers, and entrepreneurs to create groundbreaking projects.",
-      image:"/wce_acm_team.jpg",
-      color: "#FFD700",
-      icon: "💡"
+      name: "Jane Smith",
+      designation: "Lead Facilitator",
+      image: "/path/to/image.jpg",
+      // linkedin: "https://linkedin.com/in/janesmith",
+      // instagram: "https://instagram.com/janesmith",
+      positon:"HOD CSE",
+      college: "Another University"
     },
   ];
 
-  export const blogPosts = [
-    {
-      id: 1,
-      title: "Helpful Tips for Working from Home as a Freelancer",
-      excerpt: "Goth jaguar ostrich quail pea excited dear hello and bound and the and bland moral misheard roadrunner flapped lynx far that and jeepers giggled far and far",
-      category: "Working Tips",
-      image:"/wce_acm_team.jpg",
-      readTime: "3 mins read",
-      tags: ["Freelancing", "Remote Work", "Productivity"],
-      likes: 24,
-      content: "Full blog post content goes here...",
-    },
-    {
-      id: 2,
-      title: "Essential Tools for Remote Development Teams",
-      excerpt: "Discover the most effective tools and practices for managing remote development teams and maintaining high productivity levels.",
-      category: "Working Tips",
-      image:"/wce_acm_team.jpg",
-      readTime: "4 mins read",
-      tags: ["Development", "Tools", "Team Management"],
-      likes: 32,
-      content: "Full blog post content goes here...",
-    },
-    {
-      id: 3,
-      title: "Building a Successful Freelance Portfolio",
-      excerpt: "Learn how to create an impressive portfolio that attracts clients and showcases your best work effectively.",
-      category: "Working Tips",
-      image:"/wce_acm_team.jpg",
-      readTime: "5 mins read",
-      tags: ["Portfolio", "Freelancing", "Marketing"],
-      likes: 45,
-      content: "Full blog post content goes here...",
-    },
-  ]
-  
-  
-  
+
   

@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { teamMembers } from '../constants/index';
+import { teamMembers,facilitators } from '../constants/index';
+import { Link } from 'react-router-dom'
 
 
-const BoardMemberCard = ({  name,designation,image, linkedin, instagram }) => {
+const BoardMemberCard = ({  name,designation,image, position, college, linkedin, instagram }) => {
     return (
+      
       <motion.div 
-        className="w-64 h-96 rounded-xl overflow-hidden shadow-lg bg-gradient-to-r from-gray-700 to-gray-600 relative group"
+        className="w-64 h-96 rounded-xl overflow-hidden shadow-lg bg-gradient-to-r from-gray-700 to-gray-600 relative group overflow-x-hidden"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -16,19 +18,25 @@ const BoardMemberCard = ({  name,designation,image, linkedin, instagram }) => {
         <div className="h-2/3">
           <img src='/Pasted image.png' alt={name} className="w-full h-full object-cover rounded-t-xl" />
         </div>
+
         <div className="h-1/3 p-4 flex flex-col justify-between">
-          <div>
-            <h3 className="text-xl font-bold text-white mb-1">{name}</h3>
-            <p className="text-sm text-gray-200 mb-2">{designation}</p>
-            {/* <p className="text-xs text-gray-300">{position}</p> */}
-          </div>
+        
+          <div className="h-1/3 p-4 flex flex-col justify-between">
+        <div>
+          <h3 className="text-xl font-bold text-white mb-1">{name}</h3>
+          <p className="text-sm text-gray-200 mb-1">{designation}</p>
+          {position && <p className="text-xs text-gray-300 mb-1">{position}</p>}
+          {college && <p className="text-xs text-gray-300">{college}</p>}
+        </div>
+      </div>
+
         </div>
         <motion.div 
           className="absolute inset-0  bg-opacity-75 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
           initial={{ opacity: 0 }}
           whileHover={{ opacity: 1 }}
         >
-         
+{instagram  && linkedin &&          
           <div className="flex justify-center space-x-4">
             <a href={linkedin} target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-200 transition-colors duration-300">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -40,7 +48,7 @@ const BoardMemberCard = ({  name,designation,image, linkedin, instagram }) => {
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
               </svg>
             </a>
-          </div>
+          </div>}
         </motion.div>
       </motion.div>
     );
@@ -78,15 +86,38 @@ const Board = () => {
 
   return (
     <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+       <motion.h1 
+          className="text-5xl font-bold text-center mb-12 bg-heading-bg text-transparent bg-clip-text"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Our Staff Advisor
+        </motion.h1>
+        <div className="grid grid-cols-1 sm:grid-cols-1 gap-x-96 gap-y-16 justify-items-center mb-16">
+            {facilitators.map((member, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                animate={controls}
+                variants={{
+                  visible: { opacity: 1, y: 0, transition: { delay: 0.1 * index } }
+                }}
+              >
+                <BoardMemberCard {...member} />
+              </motion.div>
+            ))}
+          </div>
       <div className="max-w-full mx-auto">
         <motion.h1 
-          className="text-5xl font-bold text-center text-white mb-16"
+          className="text-5xl font-bold text-center mb-12 bg-heading-bg text-transparent bg-clip-text"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
           Our Board
         </motion.h1>
+       
         <div className="flex flex-col items-center" ref={ref}>
           {presidentCard && (
             <div className="mb-16">
@@ -117,7 +148,17 @@ const Board = () => {
                 <BoardMemberCard {...member} />
               </motion.div>
             ))}
+            
           </div>
+          <Link
+        to='/board/main' 
+        className="mt-12 inline-flex items-center px-6 py-3 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 ease-in-out shadow-lg hover:shadow-xl"
+      >
+        See all members
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </Link>
         </div>
       </div>
     </div>

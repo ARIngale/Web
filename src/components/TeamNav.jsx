@@ -1,67 +1,39 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-const TeamsNav = () => {
+const TeamNav = () => {
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname.startsWith(path);
+
   return (
-    <StyledWrapper>
-      <div className="button-container flex flex-col lg:flex-row">
-        <button className="button">
-        <Link
-          to="/board/main"
-        >
+    <div className="bg-gray-900 p-2 rounded-lg shadow-lg">
+      <div className="flex space-x-2">
+        <NavLink to="/board/main" isActive={isActive('/board/main')}>
           Main Board
-        </Link>
-          
-        </button>
-        <button className="button">
-        <Link
-          to="/board/executive"
-        >
+        </NavLink>
+        <NavLink to="/board/executive" isActive={isActive('/board/executive')}>
           Executive Board
-        </Link>
-          
-        </button>
-        
+        </NavLink>
       </div>
-    </StyledWrapper>
+    </div>
   );
-}
+};
 
-const StyledWrapper = styled.div`
-  .button-container {
-    display: flex;
-    background: #0A93C4;
-    width: 100%;
-    
-    align-items: center;
-    justify-content: space-around;
-    border-radius: 10px;
-    
-  }
+const NavLink = ({ to, children, isActive }) => (
+  <Link
+    to={to}
+    className={`
+      relative px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 ease-in-out
+      ${isActive 
+        ? 'text-white bg-gradient-to-r from-gray-800  to-gray-700' 
+        : 'text-gray-300 hover:text-white hover:bg-gray-700'}
+    `}
+  >
+    {children}
+ 
+  </Link>
+);
 
-  .button {
-    outline: 0 !important;
-    border: 0 !important;
-    // width: 40px;
-    // height: 40px;
-    padding: 10px 20px;
-    border-radius: 50%;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    transition: all ease-in-out 0.3s;
-    cursor: pointer;
-  }
+export default TeamNav;
 
-  .button:hover {
-    transform: translateY(-3px);
-  }
-
-  .icon {
-    font-size: 20px;
-  }`;
-
-export default TeamsNav;

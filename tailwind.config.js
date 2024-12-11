@@ -6,7 +6,10 @@ export default {
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'heading-bg': 'linear-gradient(to right, #ff8c00, #ff0080, #8000ff)',
+        'board-heading':'fo'
       },
+    
     },
   },
   plugins: [],

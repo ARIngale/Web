@@ -11,7 +11,7 @@ const newsItems = [
 
 export default function Hero() {
     return (
-        <div className="relative min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+        <div className="relative min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 overflow-x-hidden">
             <div className="z-10 text-center w-full max-w-2xl mx-auto space-y-8 sm:space-y-12">
                 <motion.div 
                     className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 overflow-hidden rounded-full p-[2px]"

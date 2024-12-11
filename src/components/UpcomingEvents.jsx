@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, Calendar, MapPin } from 'lucide-react';
-import { ReactTyped } from "react-typed";
-import { upcoming } from "../constants/index";
-import { motion } from 'framer-motion'
+import React, { useState, useEffect, useRef } from 'react';
+import { ChevronLeft, ChevronRight, Calendar, MapPin, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { upcoming } from '../constants/index';
 
-function Carousel() {
+const UpcomingEvents = () => {
   const [current, setCurrent] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const carouselRef = useRef(null);
 
   useEffect(() => {
@@ -49,17 +49,10 @@ function Carousel() {
 
   return (
     <div className="px-4 sm:px-6 lg:px-8 py-12">
-      <motion.h1 
-        className="text-5xl font-bold text-center mb-12 bg-gradient-to-r from-cyan-200 to-blue-600 text-transparent bg-clip-text"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        Upcoming Events
-      </motion.h1>
+     
       <div 
         ref={carouselRef}
-        className="carousel-container relative w-full max-w-7xl mx-auto overflow-hidden rounded-lg shadow-2xl"
+        className="carousel-container relative w-full bg-transparent max-w-7xl mx-auto overflow-hidden rounded-lg "
         style={{ height: 'calc(100vh - 12rem)' }}
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovering(true)}
@@ -84,13 +77,9 @@ function Carousel() {
             <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8 md:p-12 lg:p-16">
               <div className="space-y-4">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-tight">
-                  <ReactTyped
-                    strings={[item.name]}
-                    typeSpeed={30}
-                    backSpeed={50}
-                    loop
-                    className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-300 to-blue-300"
-                  />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-300 to-blue-300">
+                    {item.name}
+                  </span>
                 </h1>
                 <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold flex flex-wrap items-center text-white">
                   <span className="flex items-center mr-4 mb-2">
@@ -110,7 +99,10 @@ function Carousel() {
                     Register Now
                     <span className="inline-block ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </button>
-                  <button className="group bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white text-xs sm:text-sm md:text-base font-semibold px-4 sm:px-6 py-2 sm:py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 hover:translate-y-[-2px]">
+                  <button 
+                    className="group bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white text-xs sm:text-sm md:text-base font-semibold px-4 sm:px-6 py-2 sm:py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 hover:translate-y-[-2px]"
+                    onClick={() => setShowModal(true)}
+                  >
                     Learn More
                     <span className="inline-block ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </button>
@@ -149,9 +141,79 @@ function Carousel() {
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0  bg-black bg-opacity-50  flex items-center justify-center z-50"
+            onClick={() => setShowModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-gray-900 text-white p-8 rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-3xl font-bold">{upcoming[current].name}</h2>
+                <button onClick={() => setShowModal(false)} className="text-gray-500 hover:text-gray-700">
+                  <X size={24} />
+                </button>
+              </div>
+              <img src={upcoming[current].image} alt={upcoming[current].title} className="w-full h-48 md:h-64 object-cover rounded-lg mb-4" />
+
+              <div className="space-y-4">
+                <p><strong>Date:</strong> {upcoming[current].date}</p>
+                <p><strong>Location:</strong> {upcoming[current].location}</p>
+                <p><strong>Description:</strong> {upcoming[current].description}</p>
+                {upcoming[current].detailedInfo.schedule && (
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2">Schedule</h3>
+                    <ul className="list-disc list-inside">
+                      {upcoming[current].detailedInfo.schedule.map((item, index) => (
+                        <li key={index}>{item.time}: {item.activity}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {upcoming[current].detailedInfo.speakers && (
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2">Speakers</h3>
+                    <ul className="list-disc list-inside">
+                      {upcoming[current].detailedInfo.speakers.map((speaker, index) => (
+                        <li key={index}>{speaker.name} - {speaker.role}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {upcoming[current].detailedInfo.prizes && (
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2">Prizes</h3>
+                    <ul className="list-disc list-inside">
+                      {upcoming[current].detailedInfo.prizes.map((prize, index) => (
+                        <li key={index}>{prize.place}: {prize.amount}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {upcoming[current].detailedInfo.ticketPrice && (
+                  <p><strong>Ticket Price:</strong> {upcoming[current].detailedInfo.ticketPrice}</p>
+                )}
+                {upcoming[current].detailedInfo.entryFee && (
+                  <p><strong>Entry Fee:</strong> {upcoming[current].detailedInfo.entryFee}</p>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
 
-export default Carousel;
+export default UpcomingEvents;
 

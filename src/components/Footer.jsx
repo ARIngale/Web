@@ -16,7 +16,7 @@ function SocialIcon({ href, children }) {
 
 export default function Footer() {
     return (
-        <footer className="bg-black text-white py-4 sm:py-6 border-t-[0.5px] border-gray-800">
+        <footer className="bg-black text-white py-4 sm:py-6 border-t-[0.5px] border-gray-800 ">
             <div className="container mx-auto px-4">
                 <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
                     <div className="text-center sm:text-left">

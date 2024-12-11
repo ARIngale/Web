@@ -19,10 +19,10 @@ const MainBoardMembers = [
       {
         name: "Sharaneshwar Punjal",
         profilePic: "",
-        quote: "",
+        quote: "Eat-Sleep-Code-Repeat",
         socialHandles: {
-          linkedIn: "",
-          instagram: ""
+          linkedIn: "https://www.instagram.com/hamzu_0180/",
+          instagram: "https://www.instagram.com/hamzu_0180/"
         }
       }
     ]

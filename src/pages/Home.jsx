@@ -8,7 +8,7 @@ import Contactus from '../pages/ContactUs'
 
 export default function Home() {
     return (
-        <div>
+        <div className='min-w-screen overflow-x-hidden'>
             <Hero />
             <Carousel/>
             <Board/>

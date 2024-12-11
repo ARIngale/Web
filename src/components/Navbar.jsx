@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -54,7 +53,11 @@ function NavItems({ items, currentPath }) {
         <li key={item.name}>
           <Link
             to={item.href} 
-            className={`text-white hover:text-gray-300 text-[15px] md:text-[21px] text-nowrap ${currentPath === item.href ? 'font-bold' : ''}`}
+            className={`text-white hover:text-gray-300 text-[15px] md:text-[21px] text-nowrap ${
+              item.name === 'Board' 
+                ? (currentPath.startsWith('/board') ? 'font-bold' : '')
+                : (currentPath === item.href ? 'font-bold' : '')
+            }`}
           >
             {item.name}
           </Link>

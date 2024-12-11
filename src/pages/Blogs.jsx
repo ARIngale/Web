@@ -1,114 +1,79 @@
-import React, { useState } from 'react';
-import { blogPosts } from '../constants/index';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { blogPosts } from '../constants/Data';
+import LikeButton from '../components/LikeButton';
 
-const BlogsPage = () => {
-  const [selectedPost, setSelectedPost] = useState(null);
-  const [likes, setLikes] = useState({});
-
-  const handleLike = (e, postId) => {
-    e.stopPropagation();
-    setLikes((prev) => ({
-      ...prev,
-      [postId]: (prev[postId] || 0) + 1,
-    }));
-  };
-
+const Blogs = () => {
   return (
-    <div className="min-h-screen p-4 sm:p-6 mt-24">
-      <div className="max-w-7xl mx-auto space-y-6">
-        <h1 className="text-3xl sm:text-4xl font-bold text-cyan-400 mb-6">Recent posts</h1>
+    <div className="min-h-screen bg-transparent text-gray-100 py-12">
+      <div className="max-w-7xl mx-auto px-4">
+      <h1 className="text-center bg-heading-bg text-transparent bg-clip-text text-5xl font-bold mt-24 mb-10">Blogs</h1>
         
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {blogPosts.map((post) => (
-            <div
-              key={post.id}
-              className="group bg-gray-800 bg-opacity-50 rounded-xl overflow-hidden hover:bg-gray-800 transition-all duration-300 cursor-pointer border border-gray-700 flex flex-col h-full"
-              onClick={() => setSelectedPost(post)}
+            <Link 
+              key={post.id} 
+              to={`/blogs/${post.id}`}
+              className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-400/20 transition-shadow duration-300 flex flex-col h-full"
             >
               <div className="relative h-48">
                 <img
                   src={post.image}
                   alt={post.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute top-2 left-2 bg-purple-600 text-white text-xs px-2 py-1 rounded">
-                  {post.category}
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <span className="bg-cyan-500 text-gray-900 text-xs font-semibold px-2.5 py-0.5 rounded">
+                    {post.category}
+                  </span>
                 </div>
               </div>
               
-              <div className="p-4 flex flex-col justify-between flex-grow">
+              <div className="p-6 flex-grow flex flex-col justify-between">
                 <div>
-                  <h2 className="text-xl font-semibold text-white mb-2 group-hover:text-cyan-400 transition-colors">
+                  <h2 className="text-xl font-bold mb-2 text-cyan-300 hover:text-cyan-400 transition-colors duration-300">
                     {post.title}
                   </h2>
-                  <p className="text-gray-300 text-sm mb-2 line-clamp-3">{post.excerpt}</p>
+                  <p className="text-gray-400 text-sm mb-4 line-clamp-3">{post.excerpt}</p>
                 </div>
                 
-                <div className="flex items-center justify-between text-xs text-gray-400 mt-2">
-                  <div className="flex items-center gap-2">
-                    <span>{post.readTime}</span>
-                    <span>•</span>
-                    <span>{post.category}</span>
-                  </div>
-                  <button
-                    className="text-purple-400 hover:text-purple-300 flex items-center"
-                    onClick={(e) => handleLike(e, post.id)}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
-                    <span>{(likes[post.id] || 0) + post.likes}</span>
-                  </button>
+                <div className="flex items-center justify-between text-sm text-gray-500">
+                  <span>{post.readTime}</span>
+                  {/* Pass post.id and post.likes to LikeButton */}
+                  <LikeButton postId={post.id} initialLikes={post.likes || 0} />
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
-      </div>
 
-      {selectedPost && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4" onClick={() => setSelectedPost(null)}>
-          <div className="bg-gray-900 text-white p-4 sm:p-6 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={selectedPost.image}
-              alt={selectedPost.title}
-              className="w-full h-48 sm:h-64 object-cover rounded-lg mb-4"
-            />
-            
-            <h2 className="text-2xl sm:text-3xl font-bold text-cyan-400 mb-2">
-              {selectedPost.title}
-            </h2>
-            
-            <div className="flex flex-wrap gap-2 mb-4">
-              {selectedPost.tags.map((tag) => (
-                <span key={tag} className="bg-purple-800 text-white text-xs px-2 py-1 rounded">
-                  {tag}
-                </span>
-              ))}
+        {/* Innovative Feature: Featured Article Spotlight */}
+        <div className="mt-16 bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+          <h2 className="text-3xl font-bold text-cyan-400 p-6">Featured Article</h2>
+          <div className="md:flex">
+            <div className="md:w-1/2">
+              <img
+                src={blogPosts[0].image}
+                alt={blogPosts[0].title}
+                className="w-full h-64 object-cover"
+              />
             </div>
-            
-            <p className="text-gray-300 text-sm mb-4">{selectedPost.content}</p>
-            
-            <div className="flex items-center justify-between pt-3 border-t border-gray-800">
-              <div className="text-xs text-gray-400">
-                {selectedPost.readTime} • {selectedPost.category}
-              </div>
-              <button
-                className="text-purple-400 hover:text-purple-300 flex items-center"
-                onClick={(e) => handleLike(e, selectedPost.id)}
+            <div className="md:w-1/2 p-6">
+              <h3 className="text-2xl font-bold text-cyan-300 mb-4">{blogPosts[0].title}</h3>
+              <p className="text-gray-400 mb-4">{blogPosts[0].excerpt}</p>
+              <Link 
+                to={`/blogs/${blogPosts[0].id}`}
+                className="inline-block bg-cyan-500 text-gray-900 font-bold py-2 px-4 rounded hover:bg-cyan-400 transition-colors duration-300"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>
-                <span>{(likes[selectedPost.id] || 0) + selectedPost.likes}</span>
-              </button>
+                Read Full Article
+              </Link>
             </div>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };
 
-export default BlogsPage;
-
+export default Blogs;

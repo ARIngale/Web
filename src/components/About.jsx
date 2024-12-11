@@ -3,7 +3,15 @@ import { motion } from 'framer-motion'
 
 function About() {
   return (
-    <div className="container mx-auto px-4 py-16 text-white">
+    <div className="container mx-auto px-4 py-16 text-white overflow-x-hidden">
+        <motion.h1 
+          className="text-5xl font-bold text-center mb-12 bg-heading-bg text-transparent bg-clip-text"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          About us
+        </motion.h1>
       <div className="flex flex-col lg:flex-row items-center justify-between space-y-8 lg:space-y-0 lg:space-x-12">
         <motion.div 
           className="w-full lg:w-1/2"
@@ -20,7 +28,7 @@ function About() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h2 className='font-extrabold text-5xl lg:text-7xl mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600'>
+          <h2 className='font-extrabold text-5xl lg:text-7xl mb-6 bg-clip-text text-transparent bg-gradient-to-l from-blue-200 to-purple-700'>
             WHO ARE WE?
           </h2>
           <p className='text-lg sm:text-xl leading-relaxed'>
@@ -31,7 +39,7 @@ function About() {
             club driven by the CSE department.
           </p>
           <motion.button 
-            className="mt-8 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-3 px-6 rounded-full hover:from-blue-600 hover:to-purple-700 transition duration-300 transform hover:scale-105"
+            className="mt-8 bg-transparent border-2 border-white text-white font-bold py-3 px-10 rounded-full hover:border-0 hover:bg-blue-600 transition duration-300 transform hover:scale-105"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
