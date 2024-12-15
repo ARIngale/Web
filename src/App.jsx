@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
-import Background from './components/Background';
+import BackgroundOld from './components/BackgroundOld';
 import Home from './pages/Home';
 import Events from './pages/Events';
 import MainBoard from './pages/MainBoard';
@@ -11,11 +11,12 @@ import Blogs from './pages/Blogs';
 import BlogPost from './pages/BlogPost';
 import ContactUs from './pages/ContactUs';
 import Footer from './components/Footer';
+import Background from './components/Background';
 
 function App() {
   return (
     <Router>
-      <div className="relative min-h-screen flex flex-col bg-transparent text-white">
+      <div className="relative min-h-screen flex flex-col font-figtree bg-transparent text-white">
         <Background />
         <Navbar />
         <div className="flex-grow">

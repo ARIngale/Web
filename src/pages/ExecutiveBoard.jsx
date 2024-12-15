@@ -54,7 +54,7 @@
 import React from 'react'
 import TeamsNav from '../components/TeamNav'
 import Board from '../components/Card'
-import Background from '../components/Background'
+import Background from '../components/BackgroundOld'
 import cardData from '../Data/ExecutiveBoardMembers'
 
 function ExecutiveBoard() {
@@ -71,7 +71,7 @@ function ExecutiveBoard() {
 
   return (
     <div className="min-h-scree">
-   
+
       <div className="container mx-auto flex justify-center pt-36 pb-10">
         <TeamsNav />
       </div>

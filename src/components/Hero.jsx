@@ -3,17 +3,17 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
 const newsItems = [
-  "WCE ACM Student Chapter wins Best Chapter Award",
-  "Upcoming Hackathon: Register now!",
-  "New AI workshop series starting next month",
-  "WCE ACM members present at international conference"
+    "WCE ACM Student Chapter wins Best Chapter Award",
+    "Upcoming Hackathon: Register now!",
+    "New AI workshop series starting next month",
+    "WCE ACM members present at international conference"
 ]
 
 export default function Hero() {
     return (
         <div className="relative min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 overflow-x-hidden">
             <div className="z-10 text-center w-full max-w-2xl mx-auto space-y-8 sm:space-y-12">
-                <motion.div 
+                <motion.div
                     className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 overflow-hidden rounded-full p-[2px]"
                     initial={{ y: -50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -48,7 +48,7 @@ export default function Hero() {
                         </div>
                     </div>
                 </motion.div>
-                <motion.h1 
+                <motion.h1
                     className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold bg-gradient-to-l from-white to-gray-500 text-transparent bg-clip-text"
                     initial={{ scale: 0.5, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
@@ -56,7 +56,7 @@ export default function Hero() {
                 >
                     WCE ACM
                 </motion.h1>
-                <motion.div 
+                <motion.div
                     className="text-base sm:text-lg md:text-xl text-white font-poppins px-4 sm:px-0"
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -64,7 +64,7 @@ export default function Hero() {
                 >
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                 </motion.div>
-                <motion.div 
+                <motion.div
                     className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 md:gap-12"
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -77,7 +77,7 @@ export default function Hero() {
                         About us
                     </button>
                 </motion.div>
-                <motion.div 
+                <motion.div
                     className="flex justify-center gap-4 sm:gap-7"
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -104,7 +104,7 @@ export default function Hero() {
                     </SocialButton>
                     <SocialButton url="https://x.com/wce_acm">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                         </svg>
                     </SocialButton>
                     <SocialButton url="mailto:wceacmsc@gmail.com">
@@ -121,7 +121,7 @@ export default function Hero() {
 
 function SocialButton({ children, url }) {
     return (
-        <motion.a 
+        <motion.a
             href={url}
             target="_blank"
             rel="noopener noreferrer"
