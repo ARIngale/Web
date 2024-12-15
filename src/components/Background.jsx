@@ -2,7 +2,7 @@ import React from "react";
 
 const Background = () => {
   return (
-    <div className="gradient-container w-full h-screen bg-black">
+    <div className="fixed top-0 left-0 w-full h-full gradient-container bg-black -z-10">
     </div>
   );
 };

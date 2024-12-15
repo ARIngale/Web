@@ -16,7 +16,7 @@ import Background from './components/Background';
 function App() {
   return (
     <Router>
-      <div className="relative min-h-screen flex flex-col font-figtree bg-transparent text-white">
+      <div className="relative min-h-screen flex flex-col font-inter bg-transparent text-white">
         <Background />
         <Navbar />
         <div className="flex-grow">

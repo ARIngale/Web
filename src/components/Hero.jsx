@@ -11,17 +11,17 @@ const newsItems = [
 
 export default function Hero() {
     return (
-        <div className="relative min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 overflow-x-hidden">
+        <div className="relative min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 py-24 overflow-x-hidden">
             <div className="z-10 text-center w-full max-w-2xl mx-auto space-y-8 sm:space-y-12">
                 <motion.div
-                    className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 overflow-hidden rounded-full p-[2px]"
+                    className="bg-gradient-to-r from-purple-500/30 via-pink-500/30 to-red-500/30 overflow-hidden rounded-full p-[2px]"
                     initial={{ y: -50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <div className="bg-black rounded-full">
+                    <div className=" rounded-full">
                         <div className="flex items-center py-2 px-3 sm:px-4">
-                            <span className="text-lg sm:text-2xl md:text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mr-2 sm:mr-4 whitespace-nowrap">News:</span>
+                            <span className="text-base sm:text-lg md:text-xl font-semibold text-white mr-2 sm:mr-4 whitespace-nowrap">News:</span>
                             <div className="overflow-hidden whitespace-nowrap w-full">
                                 <motion.div
                                     className="inline-block"
@@ -38,7 +38,7 @@ export default function Hero() {
                                     }}
                                 >
                                     {newsItems.map((item, index) => (
-                                        <span key={index} className="text-white mr-8 sm:mr-16 text-sm sm:text-base md:text-lg">• {item}</span>
+                                        <span key={index} className="text-white mr-8 sm:mr-16 text-sm sm:text-base md:text-base">• {item}</span>
                                     ))}
                                     {newsItems.map((item, index) => (
                                         <span key={index + newsItems.length} className="text-white mr-8 sm:mr-16 text-sm sm:text-base md:text-lg">• {item}</span>

@@ -30,12 +30,12 @@ export default function Navbar() {
 		<nav
 			style={{
 				width: isScrolled ? '8%' : '30%',
-				transition: 'width 0.2s ease-in-out',
+				transition: 'width 0.1s ease-in-out',
 			}}
-			className={`fixed h-14 left-1/2 transform -translate-x-1/2 px-4 py-2 top-7 z-50 rounded-full backdrop-blur-md bg-gray-500/50 text-white shadow-lg transition-all duration-200 ease-in-out flex items-center`}
+			className={`fixed h-14 left-1/2 transform -translate-x-1/2 px-4 py-2 top-7 z-50 rounded-full backdrop-blur-md bg-zinc-600/60 text-white shadow-lg ease-in-out flex items-center`}
 		>
 			<div
-				className={`relative left-1/2 transform -translate-x-1/2 top-0 flex gap-3 items-center flex-grow justify-center transition-opacity duration-300 ${isScrolled ? 'opacity-0 pointer-events-none delay-0' : 'opacity-100 delay-200'
+				className={`relative left-1/2 transform -translate-x-1/2 top-0 flex gap-3 items-center flex-grow justify-center transition-opacity duration-100 ${isScrolled ? 'opacity-0 pointer-events-none delay-0' : 'opacity-100 delay-100'
 					}`}
 			>
 				{navItems.map((item) => (
