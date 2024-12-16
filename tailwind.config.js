@@ -7,8 +7,18 @@ export default {
 			fontFamily: {
 				inter: ['Inter', 'sans-serif'],
 			},
+			textShadow: {
+				DEFAULT: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+			},
+			colors: {
+				darkBlue: '#086795',
+				lightBlue: '#6ae6ee',
+				primaryBlue: '#0a93c4',
+			},
 		},
 	},
-	plugins: [],
+	plugins: [
+		require('tailwindcss-textshadow')
+	],
 }
 

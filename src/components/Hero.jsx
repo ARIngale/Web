@@ -1,6 +1,9 @@
 import React from "react"
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { FaInstagram, FaLinkedinIn, FaFacebookF, FaYoutube } from "react-icons/fa";
+import { IoMail } from "react-icons/io5";
+import { FaXTwitter } from "react-icons/fa6";
 
 const newsItems = [
     "WCE ACM Student Chapter wins Best Chapter Award",
@@ -11,37 +14,41 @@ const newsItems = [
 
 export default function Hero() {
     return (
-        <div className="relative min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 py-24 overflow-x-hidden">
-            <div className="z-10 text-center w-full max-w-2xl mx-auto space-y-8 sm:space-y-12">
+        <div className="min-h-screen w-[80%] mx-auto flex justify-center items-center gap-6">
+            <div className="flex flex-col w-2/3 items-center gap-1 mt-5">
                 <motion.div
-                    className="bg-gradient-to-r from-purple-500/30 via-pink-500/30 to-red-500/30 overflow-hidden rounded-full p-[2px]"
+                    className="w-3/4 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-red-500/20 rounded-full p-[2px] mb-3"
                     initial={{ y: -50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <div className=" rounded-full">
-                        <div className="flex items-center py-2 px-3 sm:px-4">
-                            <span className="text-base sm:text-lg md:text-xl font-semibold text-white mr-2 sm:mr-4 whitespace-nowrap">News:</span>
+                    <div className="rounded-full">
+                        <div className="flex items-center py-1 px-3 gap-2">
+                            <span className="text-base italic font-semibold text-white whitespace-nowrap">
+                                NEWS
+                            </span>
                             <div className="overflow-hidden whitespace-nowrap w-full">
                                 <motion.div
-                                    className="inline-block"
+                                    className="flex"
                                     animate={{
-                                        x: [0, -2000],
+                                        x: ["0%", "-100%"],
                                         transition: {
                                             x: {
                                                 repeat: Infinity,
-                                                repeatType: "loop",
-                                                duration: 40,
+                                                duration: 20,
                                                 ease: "linear",
                                             },
                                         },
                                     }}
                                 >
-                                    {newsItems.map((item, index) => (
-                                        <span key={index} className="text-white mr-8 sm:mr-16 text-sm sm:text-base md:text-base">• {item}</span>
-                                    ))}
-                                    {newsItems.map((item, index) => (
-                                        <span key={index + newsItems.length} className="text-white mr-8 sm:mr-16 text-sm sm:text-base md:text-lg">• {item}</span>
+                                    {/* Duplicate NewsItems to create a seamless scroll */}
+                                    {[...newsItems, ...newsItems].map((item, index) => (
+                                        <span
+                                            key={index}
+                                            className="text-white text-sm mr-4 sm:mr-6"
+                                        >
+                                            {item}
+                                        </span>
                                     ))}
                                 </motion.div>
                             </div>
@@ -49,72 +56,81 @@ export default function Hero() {
                     </div>
                 </motion.div>
                 <motion.h1
-                    className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold bg-gradient-to-l from-white to-gray-500 text-transparent bg-clip-text"
+                    className="whitespace-nowrap overflow-hidden text-[7rem] leading-none font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#4d4d4d] via-[#ffffff] to-[#919191]"
                     initial={{ scale: 0.5, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                 >
                     WCE ACM
                 </motion.h1>
+                <motion.h2
+                    className="w-max text-[3.5rem] leading-none font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ffffff] via-[#8f8f8f] to-[#ffffff] flex gap-[1rem] justify-center"
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                    <span>STUDENT</span>
+                    <span>CHAPTER</span>
+                </motion.h2>
                 <motion.div
-                    className="text-base sm:text-lg md:text-xl text-white font-poppins px-4 sm:px-0"
+                    className="w-[90%] py-4 text-[16px] text-center text-white font-light leading-tight"
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                 >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
                 </motion.div>
                 <motion.div
-                    className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 md:gap-12"
+                    className="flex flex-col sm:flex-row justify-center items-center gap-4"
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
                 >
-                    <Link to="/events" className="bg-[#0A93C4] text-black text-base sm:text-lg md:text-xl font-semibold rounded-md w-full sm:w-[140px] md:w-[160px] h-[50px] sm:h-[59px] flex items-center justify-center">
-                        Event
+                    <Link to="/events">
+                        <button type="button" class="text-white bg-gradient-to-r from-primaryBlue via-cyan-500 to-lightBlue hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-full text-lg px-7 py-2 text-center">Events</button>
                     </Link>
-                    <button className="bg-transparent border border-[#00DBE9] text-white text-base sm:text-lg md:text-xl font-semibold rounded-md w-full sm:w-[140px] md:w-[160px] h-[50px] sm:h-[59px]">
-                        About us
-                    </button>
+
+                    <Link to="/about">
+                        <button type="button" class="text-white bg-gradient-to-r from-primaryBlue via-cyan-500 to-lightBlue hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-full text-lg px-7 py-2 text-center">About</button>
+                    </Link>
                 </motion.div>
                 <motion.div
-                    className="flex justify-center gap-4 sm:gap-7"
+                    className="flex justify-center mt-6 gap-4"
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.8 }}
                 >
-                    <SocialButton url="https://www.instagram.com/wce_acm/">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                        </svg>
-                    </SocialButton>
-                    <SocialButton url="https://www.linkedin.com/company/wce-acm-student-chapter/mycompany/">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                            <rect x="2" y="9" width="4" height="12"></rect>
-                            <circle cx="4" cy="4" r="2"></circle>
-                        </svg>
-                    </SocialButton>
-                    <SocialButton url="https://www.facebook.com/wceacm/">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                        </svg>
-                    </SocialButton>
-                    <SocialButton url="https://x.com/wce_acm">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                        </svg>
-                    </SocialButton>
-                    <SocialButton url="mailto:wceacmsc@gmail.com">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                    </SocialButton>
+                    <a href="mailto:wceacmsc@gmail.com" className="p-2 bg-zinc-200 rounded-full transition-all duration-200 hover:bg-sky-300" target="_blank" rel="noopener noreferrer">
+                        <IoMail size={21} className="text-black" />
+                    </a>
+                    <a href="https://www.linkedin.com/company/wce-acm-student-chapter/mycompany/" className="p-2 bg-zinc-200 rounded-full transition-all duration-200 hover:bg-sky-300" target="_blank" rel="noopener noreferrer">
+                        <FaLinkedinIn size={21} className="text-black" />
+                    </a>
+                    <a href="https://www.instagram.com/wce_acm/" className="p-2 bg-zinc-200 rounded-full transition-all duration-200 hover:bg-sky-300" target="_blank" rel="noopener noreferrer">
+                        <FaInstagram size={21} className="text-black" />
+                    </a>
+
+                    <a href="https://www.facebook.com/wceacm/" className="p-2 bg-zinc-200 rounded-full transition-all duration-200 hover:bg-sky-300" target="_blank" rel="noopener noreferrer">
+                        <FaFacebookF size={21} className="text-black" />
+                    </a>
+                    <a href="https://www.youtube.com/@wceacm" className="p-2 bg-zinc-200 rounded-full transition-all duration-200 hover:bg-sky-300" target="_blank" rel="noopener noreferrer">
+                        <FaYoutube size={21} className="text-black" />
+                    </a>
+                    <a href="https://x.com/wce_acm" className="p-2 bg-zinc-200 rounded-full transition-all duration-200 hover:bg-sky-300" target="_blank" rel="noopener noreferrer">
+                        <FaXTwitter size={21} className="text-black" />
+                    </a>
                 </motion.div>
             </div>
+            {/* <div className="flex items-center justify-center flex-grow">
+                <motion.div
+                    className="flex items-center justify-center"
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                    <img className="w-[85%]" src="/logo.png" alt="logo" />
+                </motion.div>
+            </div> */}
         </div>
     )
 }

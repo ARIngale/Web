@@ -19,6 +19,7 @@ html {
     overflow: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    -webkit-font-smoothing: antialiased;
 }
 
 html::-webkit-scrollbar {
